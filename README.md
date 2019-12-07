@@ -82,7 +82,6 @@
 
             <!-- 新闻通用提取 -->
             result = SuperAutoExtract().get_all(html_content)
-            # result = HtmlContentExtractors().get_contents(html_content)
             return result
 
         def run(self):
