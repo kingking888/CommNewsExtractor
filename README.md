@@ -1,6 +1,8 @@
 # CommNewsExtractor
 
-一.版本：version_1.0
+一.版本：
+
+version_1.0
 
 二.功能：
 
@@ -33,7 +35,7 @@
     from extractors.AutoExtractors import *
 
     class NewsExtract(object):
-
+    
         def __init__(self):
             # self.url = "http://dy.163.com/v2/article/detail/EVQC8LOO0514D3UH.html"
             self.url = "http://www.chinanews.com/gn/2019/12-07/9027657.shtml"
@@ -54,6 +56,7 @@
                 return None
 
         def html_extract(self, html_content):
+        
             <!--单独功能提取 -->
             # title = SuperAutoExtract().get_title(html_content)
             # return title
@@ -78,7 +81,6 @@
             #
             # video = SuperAutoExtract().get_video(html_content)
             # # return video
-
 
             <!-- 新闻通用提取 -->
             result = SuperAutoExtract().get_all(html_content)
