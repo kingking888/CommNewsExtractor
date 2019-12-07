@@ -1,8 +1,14 @@
 # CommNewsExtractor
 
-一.版本：
+一.
 
-version_1.0
+A.版本：
+
+    version_1.0
+
+B.环境：
+
+    python >= 3.7
 
 二.功能：
 
@@ -14,17 +20,17 @@ version_1.0
         1.文章标题提取：get_title()
         2.文章作者提取：get_author()
         3.文章发布时间提取：get_public_time()
-        4.网页邮箱提取：get_email()
-        5.网页手机提取：get_phone()
-        6.网页电话提取：get_telephone()
-        7.网页url链接提取：get_url()
-        8.网页的IP提取：get_ip()
-        9.网页身份证号码提取：get_idcard()
-        10.网页文件提取：get_file()
-        11.网页图片提取：get_image()
-        12.网页视频提取：get_video()
+        4.文章邮箱提取：get_email()
+        5.文章手机提取：get_phone()
+        6.固定电话提取：get_telephone()
+        7.文章url链接提取：get_url()
+        8.html的IP提取：get_ip()
+        9.身份证号码提取：get_idcard()
+        10.文件提取：get_file()
+        11.图片提取：get_image()
+        12.视频提取：get_video()
         13.文章正文提取：get_content()
-        14.通用新闻内容提取：get_all()
+        14.新闻内容提取：get_all()
 
 四：使用方式：
 
@@ -35,7 +41,7 @@ version_1.0
     from extractors.AutoExtractors import *
 
     class NewsExtract(object):
-    
+
         def __init__(self):
             # self.url = "http://dy.163.com/v2/article/detail/EVQC8LOO0514D3UH.html"
             self.url = "http://www.chinanews.com/gn/2019/12-07/9027657.shtml"
@@ -56,7 +62,6 @@ version_1.0
                 return None
 
         def html_extract(self, html_content):
-        
             <!--单独功能提取 -->
             # title = SuperAutoExtract().get_title(html_content)
             # return title
@@ -82,8 +87,10 @@ version_1.0
             # video = SuperAutoExtract().get_video(html_content)
             # # return video
 
+
             <!-- 新闻通用提取 -->
             result = SuperAutoExtract().get_all(html_content)
+            # result = HtmlContentExtractors().get_contents(html_content)
             return result
 
         def run(self):
@@ -97,12 +104,19 @@ version_1.0
         ne.run()
 
 
+
+
+
 五.本项目参考和借助项目：
 
     1.https://github.com/kingname/GeneralNewsExtractor
+
     2.https://github.com/striver-ing/distributed-spider
+
     3.https://github.com/codelucas/newspaper
+
     4.https://github.com/mozilla/readability
+
     5.https://github.com/aaronsw/html2text
     
     真诚感谢以上项目的开源作者，致敬!
