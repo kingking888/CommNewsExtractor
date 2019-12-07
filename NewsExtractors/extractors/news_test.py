@@ -20,7 +20,6 @@ import requests
 # import html2text
 # from readability.readability import Document
 from extractors.AutoExtractors import *
-from extractors.html_content_extractor import *
 
 class NewsExtract(object):
     def __init__(self):
