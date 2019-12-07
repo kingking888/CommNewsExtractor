@@ -34,7 +34,15 @@ B.环境：
 
 四：使用方式：
 
-你的爬虫代码
+A.下载资源并安装环境
+
+    git clone https://github.com/kingking888/CommNewsExtractor.git
+
+    cd 到NewsExtractors的requirements.txt目录
+
+    pip install -r requirements.txt
+
+B.你的爬虫代码
 
     import requests
 
