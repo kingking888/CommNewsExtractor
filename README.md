@@ -30,15 +30,15 @@ B.环境：
         11.图片提取：get_image()
         12.视频提取：get_video()
         13.文章正文提取：get_content()
-        14.新闻内容提取：get_all()
+        14.新闻通用提取：get_all()
 
-四：使用方式：
+四.使用方式：
 
 A.下载资源并安装环境
 
     git clone https://github.com/kingking888/CommNewsExtractor.git
 
-    cd 到NewsExtractors的requirements.txt同级别目录
+    cd 到NewsExtractors目录下的requirements.txt同级别目录
 
     pip install -r requirements.txt
 
