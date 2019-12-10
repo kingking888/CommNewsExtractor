@@ -100,7 +100,7 @@
       <updated>1575727648444</updated>
       <workItem from="1575727649931" duration="6898000" />
       <workItem from="1575809101987" duration="199000" />
-      <workItem from="1575982919848" duration="6275000" />
+      <workItem from="1575982919848" duration="6570000" />
     </task>
     <servers />
   </component>
@@ -127,11 +127,6 @@
           <url>file://$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py</url>
           <line>201</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NewsExtractors/extractors/news_test.py</url>
-          <line>72</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py</url>
