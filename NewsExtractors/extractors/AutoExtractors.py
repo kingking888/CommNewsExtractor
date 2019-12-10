@@ -17,7 +17,7 @@ __author__ = 'Andy Zhong'
 from extractors.Extractors import *
 
 
-class SuperAutoExtract(object):
+class SupperAutoExtract(object):
     def __init__(self):
         pass
 

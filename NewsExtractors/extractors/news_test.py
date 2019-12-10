@@ -42,28 +42,28 @@ class NewsExtract(object):
     def html_extract(self, html_content):
 
         # result = {}
-        # title = SuperAutoExtract().get_title(html_content)
+        # title = SupperAutoExtract().get_title(html_content)
         # # return title
         #
-        # author = SuperAutoExtract().get_author(html_content)
+        # author = SupperAutoExtract().get_author(html_content)
         # # return author
         #
-        # publish_time = SuperAutoExtract().get_public_time(html_content)
+        # publish_time = SupperAutoExtract().get_public_time(html_content)
         # # return publish_time
         #
-        # # email = SuperAutoExtract().get_email(html_content)
+        # # email = SupperAutoExtract().get_email(html_content)
         # # return email
         #
-        # # url = SuperAutoExtract().get_url(html_content)
+        # # url = SupperAutoExtract().get_url(html_content)
         # # return url
         #
-        # # file = SuperAutoExtract().get_file(html_content)
+        # # file = SupperAutoExtract().get_file(html_content)
         # # return file
         #
-        # image = SuperAutoExtract().get_image(html_content)
+        # image = SupperAutoExtract().get_image(html_content)
         # # return image
         #
-        # video = SuperAutoExtract().get_video(html_content)
+        # video = SupperAutoExtract().get_video(html_content)
         # # return video
         #
         # # title = TitleExtractor().title_extractor(html_content)
@@ -85,7 +85,7 @@ class NewsExtract(object):
         #     "content" : content,
         # }
 
-        result = SuperAutoExtract().get_all(html_content)
+        result = SupperAutoExtract().get_all(html_content)
 
         return result
 
