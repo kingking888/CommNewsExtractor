@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d72a469-fc64-4c86-974d-0965c292efcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/NewsExtractors-dev6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NewsExtractors-dev6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,6 +20,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -71,7 +75,7 @@
       <updated>1575727648444</updated>
       <workItem from="1575727649931" duration="6898000" />
       <workItem from="1575809101987" duration="199000" />
-      <workItem from="1575982919848" duration="817000" />
+      <workItem from="1575982919848" duration="1167000" />
     </task>
     <servers />
   </component>

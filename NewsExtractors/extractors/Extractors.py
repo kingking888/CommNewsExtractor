@@ -92,7 +92,8 @@ class PhoneExtractor(object):
                 for phone in phone_obj:
                     if phone:
                         p = phone[0]
-                        if p and p > 10 and p != "" and p[1:2] in num_str:
+                        if p and p > 10 and p != "" \
+                                and p[1:2] in num_str:
                             phone_list.append(p)
             else:
                 return None
@@ -171,7 +172,8 @@ class IdcardsExtractor(object):
         for pattern in self.idcards_pattern:
             idcards_obj = re.search(pattern, html)
             if idcards_obj:
-                return idcards_obj.group(1) if idcards_obj.group(1) else None
+                return idcards_obj.group(1) \
+                    if idcards_obj else None
 
 
 from lxml import etree
@@ -199,7 +201,8 @@ class ImageExtractor(object):
                 image_list = html_text_new.xpath(xp)
                 if image_list:
                     for image in image_list:
-                        if image and len(image) > 10 and image != "" and "http" in image:
+                        if image and len(image) > 10 and \
+                                image != "" and "http" in image:
                             source_list.append(image)
                     continue
                 continue
