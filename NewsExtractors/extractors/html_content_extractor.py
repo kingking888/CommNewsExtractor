@@ -72,6 +72,7 @@ class HtmlContentExtractors(object):
         html = self.__replace_str(html, r'(?i)<style(.|\n)*?</style>')
         html = self.__replace_str(html, r'<!--(.|\n)*?-->')
         html = self.__replace_str(html, r'(?!&[a-z]+=)&[a-z]+;?', ' ')  # 干掉&nbsp等无用的字符 但&xxx= 这种表示参数的除外
+        html = self.__replace_str(html, r'<input/s*(.*?)/s*\/>')
 
         if save_useful_tag:
             html = self.__replace_str(html, r'(?!{useful_tag})<(.|\n)+?>'.format(useful_tag='|'.join(USEFUL_TAG)))

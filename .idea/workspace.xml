@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d72a469-fc64-4c86-974d-0965c292efcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/AutoExtractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/AutoExtractors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/html_content_extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/html_content_extractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/news_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/news_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +36,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.news_test">
+    <configuration name="Extractors" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NewsExtractors-dev6" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NewsExtractors/extractors" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="news_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NewsExtractors-dev6" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,6 +84,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.news_test" />
+        <item itemvalue="Python.Extractors" />
       </list>
     </recent_temporary>
   </component>
@@ -74,7 +100,7 @@
       <updated>1575727648444</updated>
       <workItem from="1575727649931" duration="6898000" />
       <workItem from="1575809101987" duration="199000" />
-      <workItem from="1575982919848" duration="1350000" />
+      <workItem from="1575982919848" duration="6275000" />
     </task>
     <servers />
   </component>
@@ -94,7 +120,35 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py</url>
+          <line>201</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NewsExtractors/extractors/news_test.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/NewsExtractors_dev6$news_test.coverage" NAME="news_test Coverage Results" MODIFIED="1575809120962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NewsExtractors/extractors" />
+    <SUITE FILE_PATH="coverage/CommNewsExtractor$news_test.coverage" NAME="news_test Coverage Results" MODIFIED="1575990041848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NewsExtractors/extractors" />
+    <SUITE FILE_PATH="coverage/CommNewsExtractor$Extractors.coverage" NAME="Extractors Coverage Results" MODIFIED="1575987623835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/NewsExtractors/extractors" />
   </component>
 </project>

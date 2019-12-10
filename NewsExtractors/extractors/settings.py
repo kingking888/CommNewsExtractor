@@ -24,7 +24,9 @@ AUTHOR_PATTERN = [
             "原创[：|:| |丨|/]\s*([\u4E00-\u9FA5a-zA-Z]{2,20})[^\u4E00-\u9FA5|:|：]",
             "撰文[：|:| |丨|/]\s*([\u4E00-\u9FA5a-zA-Z]{2,20})[^\u4E00-\u9FA5|:|：]",
             "来源[：|:| |丨|/]\s*([\u4E00-\u9FA5a-zA-Z]{2,20})[^\u4E00-\u9FA5|:|：|<]",
+            r'"editorName":"(.*?)",',
             r'<p class="author-name">(.*?)</p>',
+            r'"media": "(.*?)",',
 ]
 
 # 日期正则匹配
@@ -79,6 +81,7 @@ ANNOTATION_PATTERN = [
 # 图片匹配
 IMAGE_PATTERN = [
     # r"< *[img][^\>]*[src] *= *[\"\']{0,1}([^\"\'\ >]*)",
+    r'src="(.*?)"',
     r'<*[img][^\>]*[src]="(.*?)"\s*',
 ]
 
@@ -159,6 +162,7 @@ GET_IMAGE_PATTERN = [
 ]
 
 IMAGE_XPATH_PATTREN = [
+    "//image/@src"
     "//div[@id='article']//p//img/@src",
     "//div[@id='article']//img/@src",
     "//div[@class='article-content']//p//img/@src",

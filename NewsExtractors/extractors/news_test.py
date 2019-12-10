@@ -16,11 +16,48 @@ __author__ = 'Andy Zhong'
 
 import requests
 from extractors.AutoExtractors import *
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class NewsExtract(object):
     def __init__(self):
-        self.url = "http://www.chinanews.com/gn/2019/12-07/9027657.shtml"
+        """
+        已测试网站
+        """
+        # http://www.chinanews.com/
+        self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
+        # https://www.hao123.com/
+        # self.url = "https://www.hao123.com/mid?from=shoubai&key=9412104569053922697&type=rec"
+        # https://news.sina.com.cn/
+        # self.url = "https://news.sina.com.cn/c/2019-12-10/doc-iihnzahi6563166.shtml"
+        # http://www.sohu.com/
+        # self.url = "http://www.sohu.com/a/359537759_114988?_f=index_chan08news_6"
+        # https://news.qq.com/
+        # self.url = "https://new.qq.com/omn/PEG20191/PEG2019121000975400.html"
+        # https://news.163.com/
+        # self.url = "https://news.163.com/19/1210/20/F02GT6270001899O.html"
+        # http://news.ifeng.com/
+        # self.url = "https://news.ifeng.com/c/7sIDPyRWK36"
+        # http://www.xinhuanet.com/
+        # self.url = "http://www.xinhuanet.com/gangao/2019-12/10/c_1125331339.htm"
+        # http://env.people.com.cn
+        # self.url = "http://env.people.com.cn/n1/2019/1210/c1010-31498499.html"
+        # http://news.cctv.com/
+        # self.url = "http://news.cctv.com/2019/12/10/ARTIOqy9gwiHXKlH5NWHCPPo191210.shtml?spm=C94212.P4YnMod9m2uD.ENPMkWvfnaiV.16"
+        # https://www.huanqiu.com/
+        # self.url = "https://opinion.huanqiu.com/article/9CaKrnKog6X"
+        # http://news.baidu.com/
+        # self.url = "http://news.cctv.com/2019/12/10/ARTISVPiNSCB6N4xWZjRPkNV191210.shtml"
+        # http://www.cankaoxiaoxi.com
+        # self.url = "http://www.cankaoxiaoxi.com/china/20191210/2397383.shtml"
+        # https://www.thepaper.cn/
+        # self.url = "https://www.thepaper.cn/newsDetail_forward_5198726"
+        # http://www.takungpao.com/
+        # self.url = "http://www.takungpao.com/news/232109/2019/1209/387560.html"
+        # http://www.stnn.cc/
+        # self.url = "http://news.stnn.cc/hongkong/2019/1210/697580.shtml"
+
         self.headers = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
             "Accept-Encoding": "gzip, deflate",
@@ -36,8 +73,12 @@ class NewsExtract(object):
             html_content = res.text
             if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
                 return html_content
-            print("提取内容为空或者太短")
-            return None
+            else:
+                print("换解码方式")
+                res.encoding = "gbk"
+                html_content = res.text
+                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}", html_content):
+                    return html_content
 
     def html_extract(self, html_content):
 
@@ -86,7 +127,6 @@ class NewsExtract(object):
         # }
 
         result = SupperAutoExtract().get_all(html_content)
-
         return result
 
     def run(self):

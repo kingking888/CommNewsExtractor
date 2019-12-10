@@ -33,7 +33,8 @@ class TitleExtractor(object):
             if title_obj:
                 title = title_obj.group(1)
                 new_title = re.split(self.title_split_char_pattern, title)
-                return new_title[0] if new_title else None
+                if new_title:
+                    return new_title[0]
 
 
 # 作者提取类
@@ -45,7 +46,13 @@ class AuthorExtractor(object):
         for pattern in self.author_pattern:
             author_obj = re.search(pattern, html)
             if author_obj:
-                return author_obj.group(1) if author_obj else None
+                author = author_obj.group(1)
+                if author:
+                    return author
+                else:
+                    continue
+            else:
+                continue
 
 
 # 发布时间提取类
@@ -191,8 +198,12 @@ class ImageExtractor(object):
                 content = HtmlContentExtractors() \
                     .get_contents(html_text)
                 if content:
-                    images = re.findall(self.image_pattern, content)
-                    return images if images else None
+                    for pattern in self.image_pattern:
+                        images = re.findall(pattern, content)
+                        if images:
+                            return images
+                        continue
+
             finally:
                 pass
             html_text_new = etree.HTML(html_text)

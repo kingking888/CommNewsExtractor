@@ -99,13 +99,13 @@ class SupperAutoExtract(object):
         author = self.get_author(html)
         public_time = self.get_public_time(html)
         content = self.get_content(html)
-        video = self.get_video(html)
+        image = self.get_image(html)
         result = {
             "title" : title,
             "author": author,
             "public_time": public_time,
             "content": content,
-            "video": video,
+            "image": image,
         }
         return result if result else None
 
