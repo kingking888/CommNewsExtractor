@@ -2,19 +2,20 @@
 # !/usr/bin/env python
 """
 -------------------------------------------------
-   File Name：    news_test.py
+   File Name：    AutoExtractors.py
    Description :  api入口类
    Author :       Andy Zhong
    date：          2019/12/7
 -------------------------------------------------
    Change Activity:
-                   2019/12/7:
+                   2019/12/10:
 -------------------------------------------------
 """
 
 __author__ = 'Andy Zhong'
 
 from extractors.Extractors import *
+
 
 class SuperAutoExtract(object):
     def __init__(self):

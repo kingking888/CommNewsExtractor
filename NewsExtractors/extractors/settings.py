@@ -8,7 +8,7 @@
    date：          2019/12/7
 -------------------------------------------------
    Change Activity:
-                   2019/12/7:
+                   2019/12/10:
 -------------------------------------------------
 """
 __author__ = 'Andy Zhong'
@@ -180,7 +180,8 @@ MIN_PARAGRAPH_AND_CONTENT_PROPORTION = 0.5 # p标签内的文字长度/正文长
 MIN_COUNTENT_WORDS = 500 # 最小文章内容长度
 RELEASE_TIME_OFFSET= 10 # 发布时间偏离正文区域的距离， 如正文在 10~28 行 ，发布时间在 (10-RELEASE_TIME_OFFSET) ~ (28 + RELEASE_TIME_OFFSET) 行之内
 
-USEFUL_TAG = [ # html 中需要保留的标签
+# html 中需要保留的标签
+USEFUL_TAG = [
         r'<img(.|\n)+?>',
         r'<p(.|\n)*?>',
         r'</p>',
@@ -189,4 +190,4 @@ USEFUL_TAG = [ # html 中需要保留的标签
         r'<strong.*?>',
         r'</strong>',
         r'<br.*?/>'
-    ]
+]

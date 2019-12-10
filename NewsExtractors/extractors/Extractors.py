@@ -8,7 +8,7 @@
    date：          2019/12/7
 -------------------------------------------------
    Change Activity:
-                   2019/12/7:
+                   2019/12/10:
 -------------------------------------------------
 """
 __author__ = 'Andy Zhong'
@@ -185,6 +185,14 @@ class ImageExtractor(object):
 
     def image_extractor(self, html_text):
         if html_text and html_text != "":
+            try:
+                content = HtmlContentExtractors() \
+                    .get_contents(html_text)
+                if content:
+                    images = re.findall(self.image_pattern, content)
+                    return images if images else None
+            finally:
+                pass
             html_text_new = etree.HTML(html_text)
             source_list = []
             for xp in self.image_xpath_pattern:
