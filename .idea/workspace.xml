@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d72a469-fc64-4c86-974d-0965c292efcd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/AutoExtractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/AutoExtractors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/Extractors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/news_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/news_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsExtractors/extractors/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsExtractors/extractors/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +71,7 @@
       <updated>1575727648444</updated>
       <workItem from="1575727649931" duration="6898000" />
       <workItem from="1575809101987" duration="199000" />
-      <workItem from="1575982919848" duration="288000" />
+      <workItem from="1575982919848" duration="817000" />
     </task>
     <servers />
   </component>

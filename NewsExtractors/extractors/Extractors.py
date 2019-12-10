@@ -45,7 +45,7 @@ class AuthorExtractor(object):
         for pattern in self.author_pattern:
             author_obj = re.search(pattern, html)
             if author_obj:
-                return author_obj.group(1) if author_obj.group(1) else None
+                return author_obj.group(1) if author_obj else None
 
 
 # 发布时间提取类
@@ -57,7 +57,7 @@ class TimeExtractor(object):
         for pattern in self.time_pattern:
             time_obj = re.search(pattern, html)
             if time_obj:
-                return time_obj.group(1) if time_obj.group(1) else None
+                return time_obj.group(1) if time_obj else None
 
 
 # 邮箱提取类
