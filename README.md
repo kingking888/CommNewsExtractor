@@ -60,13 +60,18 @@ B.你的爬虫代码
             }
 
         def start_requests(self):
-            res = requests.get(url=self.url,headers=self.headers,timeout=5,verify=False)
-            if res.status_code == 200:
-                res.encoding = "UTF-8"
-                html_content = res.text
-                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
-                    return html_content
-                return None
+	        res = requests.get(url=self.url,headers=self.headers,timeout=5,verify=False)
+	        if res.status_code == 200:
+	            res.encoding = "UTF-8"
+	            html_content = res.text
+	            if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
+	                return html_content
+	            else:
+	                print("换解码方式")
+	                res.encoding = "gbk"
+	                html_content = res.text
+	                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}", html_content):
+	                    return html_content
 
         def html_extract(self, html_content):
         
