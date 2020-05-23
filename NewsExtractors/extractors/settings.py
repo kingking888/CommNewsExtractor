@@ -217,3 +217,9 @@ USEFUL_TAG = [
     r'</strong>',
     r'<br.*?/>'
 ]
+
+js_key_dict = {
+                "tit_key_exp": "json_text['data']['title']",
+                "con_key_exp": "json_text['data']['content']",
+                "time_key_exp": "json_text['data']['time']"
+}

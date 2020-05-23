@@ -13,9 +13,11 @@
 """
 __author__ = 'Andy Zhong'
 
-import urllib3
+import json, urllib3
 import requests
 from extractors.AutoExtractors import *
+from extractors.settings import js_key_dict
+from Jsonabstract.Json_abstract import Json_abstract
 from tools.automatic_detect import automatic_detect
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -26,7 +28,7 @@ class NewsExtract(object):
         已测试网站
         """
         # http://www.chinanews.com/
-        self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
+        self.url = "http://www.chinanews.com/gn/2020/05-23/9192614.shtml"
         # https://www.hao123.com/
         # self.url = "https://www.hao123.com/mid?from=shoubai&key=9412104569053922697&type=rec"
         # https://news.sina.com.cn/
@@ -57,6 +59,8 @@ class NewsExtract(object):
         # self.url = "http://www.takungpao.com/news/232109/2019/1209/387560.html"
         # http://www.stnn.cc/
         # self.url = "http://news.stnn.cc/hongkong/2019/1210/697580.shtml"
+        # Json---url
+        # self.url = "http://www.zhwhg.com/api/article/read?id=1099"
 
         self.headers = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
@@ -65,67 +69,47 @@ class NewsExtract(object):
             "Upgrade-Insecure-Requests": "1",
             "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36",
         }
+        self.key_dict = js_key_dict
+        self.Json_abstract = Json_abstract()
 
     def start_requests(self):
+        html_encoding = automatic_detect(self.url)
+        print(html_encoding)
         res = requests.get(url=self.url, headers=self.headers, timeout=5, verify=False)
         if res.status_code == 200:
-            res.encoding = automatic_detect(self.url)
-            html_content = res.text
-            if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
-                return html_content
+            try:
+                if "www.chinanews.com" in self.url:
+                    res.encoding = "utf-8"
+                else:
+                    res.encoding = html_encoding
+                html_content = res.text
+                if html_content:
+                    return html_content
+            except Exception as e:
+                # print(e)
+                pass
+
+    def judge_if_json(self, html_content):
+        if html_content:
+            try:
+                json_html = json.loads(html_content)
+                print("This is Json Html")
+                return json_html
+            except Exception as e:
+                # print(e)
+                pass
 
     def html_extract(self, html_content):
-
-        # result = {}
-        # title = SupperAutoExtract().get_title(html_content)
-        # # return title
-        #
-        # author = SupperAutoExtract().get_author(html_content)
-        # # return author
-        #
-        # publish_time = SupperAutoExtract().get_public_time(html_content)
-        # # return publish_time
-        #
-        # # email = SupperAutoExtract().get_email(html_content)
-        # # return email
-        #
-        # # url = SupperAutoExtract().get_url(html_content)
-        # # return url
-        #
-        # # file = SupperAutoExtract().get_file(html_content)
-        # # return file
-        #
-        # image = SupperAutoExtract().get_image(html_content)
-        # # return image
-        #
-        # video = SupperAutoExtract().get_video(html_content)
-        # # return video
-        #
-        # # title = TitleExtractor().title_extractor(html_content)
-        # # content = HtmlContentExtract(html_content).main_body_longest()
-        # doc = Document(html_content)
-        # content = doc.summary()
-        # #
-        # # h = html2text.HTML2Text()
-        # # h.ignore_links = True
-        # # content = h.handle(html_content)
-        # # return content
-        #
-        # result = {
-        #     "title": title,
-        #     "author": author,
-        #     "publish_time": publish_time,
-        #     "image": image,
-        #     "video": video,
-        #     "content" : content,
-        # }
-
-        result = SupperAutoExtract().get_all(html_content)
+        result = SupperAutoExtract().get_all(html_content, tag=0)
         return result
 
     def run(self):
         html_content = self.start_requests()
-        result = self.html_extract(html_content)
+        json_html = self.judge_if_json(html_content)
+        if json_html:
+            result = self.Json_abstract.all_abstract(json_html, key_exp_dict=self.key_dict)
+        else:
+            result = self.html_extract(html_content)
         print(result)
 
 

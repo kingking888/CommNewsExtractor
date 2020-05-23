@@ -16,6 +16,7 @@ __author__ = 'Andy Zhong'
 import html2text
 from extractors.settings import *
 from newspaper import fulltext
+from extractors.cix_extractor import Extractor
 from extractors.html_content_extractor import *
 from readability.readability import Document
 
@@ -322,18 +323,24 @@ class VideosExtractor(object):
 
 class ContentExtractor(object):
     def __init__(self):
-        pass
+        self.et = Extractor()
 
-    def content_extractor(self, html):
-        try:
-            # content = HtmlContentExtractors().get_contents(html)
-            content = self.readability_extractor(html)
-            if content:
-                return content
-            else:
+    def content_extractor(self, html, tag):
+        if tag == 0:
+            try:
+                # content = HtmlContentExtractors().get_contents(html)
+                # content = self.readability_extractor(html)
+                content = self.et.getContext(html)
+                # print("content:{}".format(content))
+                if content:
+                    return content
+            except:
+                return self.readability_extractor(html)
+        else:
+            try:
+                return self.readability_extractor(html)
+            except:
                 return self.newspaper_extractor(html)
-        except:
-            return self.newspaper_extractor(html)
 
     def newspaper_extractor(self, html):
         try:

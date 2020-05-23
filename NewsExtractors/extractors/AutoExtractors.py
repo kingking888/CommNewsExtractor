@@ -81,39 +81,30 @@ class SupperAutoExtract(object):
             return VideosExtractor().videos_extractor(html)
         return None
 
-    def get_content(self, html):
+    def get_content(self, html, tag):
         if self.judge_html(html):
-            return ContentExtractor().content_extractor(html)
+            return ContentExtractor().content_extractor(html, tag)
         return None
 
 
     def judge_html(self, html):
         if html and len(html) > 10 and html != "" and \
-                re.search(r"[\u4E00-\u9FA5]{10,20}",html):
+                re.search(r"[\u4E00-\u9FA5]{10,20}", html):
             return html
         return None
 
     # News 提取
-    def get_all(self, html):
+    def get_all(self, html, tag):
         title = self.get_title(html)
         author = self.get_author(html)
         public_time = self.get_public_time(html)
-        content = self.get_content(html)
+        content = self.get_content(html, tag)
         image = self.get_image(html)
         result = {
-            "title" : title,
+            "title": title,
             "author": author,
             "public_time": public_time,
             "content": content,
             "image": image,
         }
         return result if result else None
-
-
-
-
-
-
-
-
-
