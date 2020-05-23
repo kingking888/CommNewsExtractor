@@ -16,6 +16,7 @@ __author__ = 'Andy Zhong'
 
 import requests
 from extractors.AutoExtractors import *
+from tools.automatic_detect import automatic_detect
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -26,7 +27,7 @@ class NewsExtract(object):
         已测试网站
         """
         # http://www.chinanews.com/
-        self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
+        # self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
         # https://www.hao123.com/
         # self.url = "https://www.hao123.com/mid?from=shoubai&key=9412104569053922697&type=rec"
         # https://news.sina.com.cn/
@@ -36,7 +37,7 @@ class NewsExtract(object):
         # https://news.qq.com/
         # self.url = "https://new.qq.com/omn/PEG20191/PEG2019121000975400.html"
         # https://news.163.com/
-        # self.url = "https://news.163.com/19/1210/20/F02GT6270001899O.html"
+        self.url = "https://news.163.com/19/1210/20/F02GT6270001899O.html"
         # http://news.ifeng.com/
         # self.url = "https://news.ifeng.com/c/7sIDPyRWK36"
         # http://www.xinhuanet.com/
@@ -67,18 +68,12 @@ class NewsExtract(object):
         }
 
     def start_requests(self):
-        res = requests.get(url=self.url,headers=self.headers,timeout=5,verify=False)
+        res = requests.get(url=self.url, headers=self.headers, timeout=5, verify=False)
         if res.status_code == 200:
-            res.encoding = "UTF-8"
+            res.encoding = automatic_detect(self.url)
             html_content = res.text
             if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
                 return html_content
-            else:
-                print("换解码方式")
-                res.encoding = "gbk"
-                html_content = res.text
-                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}", html_content):
-                    return html_content
 
     def html_extract(self, html_content):
 

@@ -8,11 +8,10 @@
    date：          2019/12/7
 -------------------------------------------------
    Change Activity:
-                   2019/12/10:
+                   2020/5/23:
 -------------------------------------------------
 """
 __author__ = 'Andy Zhong'
-
 
 import html2text
 from extractors.settings import *
@@ -33,8 +32,8 @@ class TitleExtractor(object):
             if title_obj:
                 title = title_obj.group(1)
                 new_title = re.split(self.title_split_char_pattern, title)
-                if new_title:
-                    return new_title[0]
+                return new_title[0]
+            continue
 
 
 # 作者提取类
@@ -49,10 +48,8 @@ class AuthorExtractor(object):
                 author = author_obj.group(1)
                 if author:
                     return author
-                else:
-                    continue
-            else:
                 continue
+            continue
 
 
 # 发布时间提取类
@@ -64,7 +61,8 @@ class TimeExtractor(object):
         for pattern in self.time_pattern:
             time_obj = re.search(pattern, html)
             if time_obj:
-                return time_obj.group(1) if time_obj else None
+                return time_obj.group(1)
+            continue
 
 
 # 邮箱提取类
@@ -82,6 +80,8 @@ class EmailExtractor(object):
                         e = em[0]
                         if e and len(e) > 7 and e != "":
                             email_list.append(e)
+                    continue
+            continue
         return set(email_list) if email_list else None
 
 
@@ -102,8 +102,8 @@ class PhoneExtractor(object):
                         if p and p > 10 and p != "" \
                                 and p[1:2] in num_str:
                             phone_list.append(p)
-            else:
-                return None
+                        continue
+            continue
         return set(phone_list) if phone_list else None
 
 
@@ -125,8 +125,8 @@ class TelephoneExtractor(object):
                             t = telephone[0]
                             if t and len(t) > 8 and t != "":
                                 telephone_list.append(t)
-                else:
-                    return None
+                        continue
+                continue
             return set(telephone_list) if telephone_list else None
 
 
@@ -145,8 +145,8 @@ class UrlExtractor(object):
                         u = url[0]
                         if u and len(u) > 5 and u != "":
                             url_list.append(u)
-            else:
-                return None
+                    continue
+            continue
         return set(url_list) if url_list else None
 
 
@@ -165,8 +165,8 @@ class IpExtractor(object):
                         i = ip[0]
                         if i and len(i) > 10 and i != "":
                             ip_list.append(i)
-            else:
-                return None
+                    continue
+            continue
         return set(ip_list) if ip_list else None
 
 
@@ -179,8 +179,11 @@ class IdcardsExtractor(object):
         for pattern in self.idcards_pattern:
             idcards_obj = re.search(pattern, html)
             if idcards_obj:
-                return idcards_obj.group(1) \
-                    if idcards_obj else None
+                idcard_num = idcards_obj.group(1)
+                if idcard_num:
+                    return idcard_num
+                continue
+            continue
 
 
 from lxml import etree
@@ -193,17 +196,22 @@ class ImageExtractor(object):
         self.image_xpath_pattern = IMAGE_XPATH_PATTREN
 
     def image_extractor(self, html_text):
+        img_list = []
         if html_text and html_text != "":
             try:
-                content = HtmlContentExtractors() \
-                    .get_contents(html_text)
+                content = HtmlContentExtractors().get_contents(html_text)
                 if content:
                     for pattern in self.image_pattern:
                         images = re.findall(pattern, content)
                         if images:
-                            return images
+                            for img in images:
+                                if img.startswith("//") and "http" not in img:
+                                    img = "http:" + img
+                                    img_list.append(img)
+                                else:
+                                    img_list.append(img)
+                            return img_list
                         continue
-
             finally:
                 pass
             html_text_new = etree.HTML(html_text)
@@ -219,6 +227,7 @@ class ImageExtractor(object):
                 continue
 
             return set(source_list) if source_list else None
+
 
 # 图片提取类
 # class ImageExtractor(object):
@@ -241,13 +250,13 @@ class ImageExtractor(object):
 #
 #         return set(image_list)
 
-        # if image_list and image_list != "":
-        #     new_image_list = []
-        #     for im_t in self.image_type_list:
-        #         for im in image_list:
-        #             if im_t in im and im.endswith(im_t):
-        #                 new_image_list.append(im)
-        #     return set(new_image_list)
+# if image_list and image_list != "":
+#     new_image_list = []
+#     for im_t in self.image_type_list:
+#         for im in image_list:
+#             if im_t in im and im.endswith(im_t):
+#                 new_image_list.append(im)
+#     return set(new_image_list)
 
 
 # 文档提取类
@@ -266,8 +275,8 @@ class FilesExtractor(object):
                         f = fi[0]
                         if f and len(f) > 4 and f != "":
                             file_list.append(f)
-            else:
-                return None
+                    continue
+            continue
         if file_list and file_list != "":
             return self.f_extractor(file_list)
         return None
@@ -278,6 +287,7 @@ class FilesExtractor(object):
             for f_l in file_list:
                 if f and f in f_l and f != "" and f_l.endswith(f):
                     new_file_list.append(f_l)
+                continue
         return set(new_file_list) if new_file_list else None
 
 
@@ -296,9 +306,7 @@ class VideosExtractor(object):
                     v_link = v[0]
                     if v_link and len(v_link) > 5 and v_link != "":
                         video_list.append(v_link)
-            else:
-                print("没有找到视频链接")
-                return None
+            continue
         if video_list and video_list != "":
             return self.video_extractor(video_list)
 
@@ -308,6 +316,7 @@ class VideosExtractor(object):
             for v in video_list:
                 if f and f in v and v.endswith(f):
                     link_list.append(v)
+                continue
         return set(link_list) if link_list else None
 
 
@@ -315,9 +324,10 @@ class ContentExtractor(object):
     def __init__(self):
         pass
 
-    def content_extractor(self,html):
+    def content_extractor(self, html):
         try:
-            content = HtmlContentExtractors().get_contents(html)
+            # content = HtmlContentExtractors().get_contents(html)
+            content = self.readability_extractor(html)
             if content and content != "":
                 return content
             else:
@@ -325,7 +335,7 @@ class ContentExtractor(object):
         except:
             return self.newspaper_extractor(html)
 
-    def newspaper_extractor(self,html):
+    def newspaper_extractor(self, html):
         try:
             content = fulltext(html)
             if content and content != "":
@@ -357,8 +367,3 @@ class ContentExtractor(object):
                 return None
         except:
             return None
-
-
-
-
-

@@ -8,7 +8,7 @@
    date：          2019/12/7
 -------------------------------------------------
    Change Activity:
-                   2019/12/7:
+                   2020/05/23:
 -------------------------------------------------
 """
 __author__ = 'Andy Zhong'
@@ -16,6 +16,7 @@ __author__ = 'Andy Zhong'
 
 import re
 from extractors.settings import *
+
 
 class HtmlContentExtractors(object):
     def __init__(self, language='zh'):
