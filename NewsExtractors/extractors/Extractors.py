@@ -328,7 +328,7 @@ class ContentExtractor(object):
         try:
             # content = HtmlContentExtractors().get_contents(html)
             content = self.readability_extractor(html)
-            if content and content != "":
+            if content:
                 return content
             else:
                 return self.newspaper_extractor(html)
@@ -338,7 +338,7 @@ class ContentExtractor(object):
     def newspaper_extractor(self, html):
         try:
             content = fulltext(html)
-            if content and content != "":
+            if content:
                 return content
             else:
                 return self.readability_extractor(html)
@@ -349,7 +349,7 @@ class ContentExtractor(object):
         try:
             doc = Document(html)
             content = doc.summary()
-            if content and content != "":
+            if content:
                 return content
             else:
                 return self.html2text_extractor(html)
@@ -361,9 +361,6 @@ class ContentExtractor(object):
             h = html2text.HTML2Text()
             h.ignore_links = True
             content = h.handle(html)
-            if content and content != "":
-                return content
-            else:
-                return None
+            return content if content else None
         except:
             return None
