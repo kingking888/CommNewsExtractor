@@ -4,7 +4,7 @@
 
 A.版本：
 
-    version_1.0
+    version_1.5
 
 B.环境：
 
@@ -38,18 +38,20 @@ A.下载资源并安装环境
 
     git clone https://github.com/kingking888/CommNewsExtractor.git
 
-    cd 到NewsExtractors目录下的requirements.txt同级别目录
+    cd 到CommNewsExtractor目录下的requirements.txt同级别目录
 
     pip install -r requirements.txt
 
 B.你的爬虫代码
 
+    '''
+    import urllib3
     import requests
-
     from extractors.AutoExtractors import *
+    from tools.automatic_detect import automatic_detect
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     class NewsExtract(object):
-
         def __init__(self):
             self.url = "http://www.chinanews.com/gn/2019/12-07/9027657.shtml"
             self.headers = {
@@ -60,18 +62,12 @@ B.你的爬虫代码
             }
 
         def start_requests(self):
-	        res = requests.get(url=self.url,headers=self.headers,timeout=5,verify=False)
-	        if res.status_code == 200:
-	            res.encoding = "UTF-8"
-	            html_content = res.text
-	            if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
-	                return html_content
-	            else:
-	                print("换解码方式")
-	                res.encoding = "gbk"
-	                html_content = res.text
-	                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}", html_content):
-	                    return html_content
+            res = requests.get(url=self.url, headers=self.headers, timeout=5, verify=False)
+            if res.status_code == 200:
+                res.encoding = automatic_detect(self.url)
+                html_content = res.text
+                if html_content and len(html_content) > 10 and re.search(r"[\u4E00-\u9FA5]{5,20}",html_content):
+                    return html_content
 
         def html_extract(self, html_content):
         
@@ -114,6 +110,7 @@ B.你的爬虫代码
     if __name__ == '__main__':
         ne = NewsExtract()
         ne.run()
+    '''
 
 
 

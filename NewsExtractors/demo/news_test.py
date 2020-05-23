@@ -13,11 +13,10 @@
 """
 __author__ = 'Andy Zhong'
 
-
+import urllib3
 import requests
 from extractors.AutoExtractors import *
 from tools.automatic_detect import automatic_detect
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -27,7 +26,7 @@ class NewsExtract(object):
         已测试网站
         """
         # http://www.chinanews.com/
-        # self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
+        self.url = "http://www.chinanews.com/gn/2019/12-10/9029580.shtml"
         # https://www.hao123.com/
         # self.url = "https://www.hao123.com/mid?from=shoubai&key=9412104569053922697&type=rec"
         # https://news.sina.com.cn/
@@ -37,7 +36,7 @@ class NewsExtract(object):
         # https://news.qq.com/
         # self.url = "https://new.qq.com/omn/PEG20191/PEG2019121000975400.html"
         # https://news.163.com/
-        self.url = "https://news.163.com/19/1210/20/F02GT6270001899O.html"
+        # self.url = "https://news.163.com/19/1210/20/F02GT6270001899O.html"
         # http://news.ifeng.com/
         # self.url = "https://news.ifeng.com/c/7sIDPyRWK36"
         # http://www.xinhuanet.com/
