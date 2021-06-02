@@ -2,7 +2,7 @@ lxml==4.5.0
 requests==2.23.0
 tld==0.12.2
 tldextract==2.2.2
-urllib3==1.25.9
+urllib3==1.26.5
 html2text==2019.9.26
 jieba==0.39
 newspaper3k==0.2.8
