@@ -171,8 +171,7 @@ B.你的爬虫代码
  
 六.欢迎完善项目，star和提issue
 
-    微信：zhongyiping168
-    QQ: 184108270
+    ![image](https://user-images.githubusercontent.com/44130236/226170071-49ca4703-a611-4fce-b008-2e8f70138e51.png)
 
     
 七.声明：
