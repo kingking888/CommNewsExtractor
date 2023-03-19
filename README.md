@@ -171,7 +171,7 @@ B.你的爬虫代码
  
 六.欢迎完善项目，star和提issue
 
-    ![image](https://user-images.githubusercontent.com/44130236/226170071-49ca4703-a611-4fce-b008-2e8f70138e51.png)
+    ![image](https://github.com/kingking888/CommNewsExtractor/blob/master/WechatIMG124.jpeg)
 
     
 七.声明：
